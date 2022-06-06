@@ -19,6 +19,22 @@ public:
     friend std::ostream& operator << (std::ostream& os, const Person person);
     friend std::istream& operator >> (std::istream& is, Person& person);
 
+    const std::string &getFirstName() const;
+
+    const std::string &getLastName() const;
+
+    const std::string &getId() const;
+
+    double *getWorkHours() const;
+
+    void setFirstName(const std::string &firstName);
+
+    void setLastName(const std::string &lastName);
+
+    void setId(const std::string &id);
+
+    void setWorkHours(double workHours);
+
 
 };
 

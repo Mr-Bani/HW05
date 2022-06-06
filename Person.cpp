@@ -45,4 +45,36 @@ std::istream &operator>>(std::istream &is, Person &person) {
     return is;
 }
 
+const string &Person::getFirstName() const {
+    return firstName;
+}
+
+const string &Person::getLastName() const {
+    return lastName;
+}
+
+const string &Person::getId() const {
+    return id;
+}
+
+double *Person::getWorkHours() const {
+    return workHours;
+}
+
+void Person::setFirstName(const string &firstName) {
+    this->firstName = firstName;
+}
+
+void Person::setLastName(const string &lastName) {
+    this->lastName = lastName;
+}
+
+void Person::setId(const string &id) {
+    this->id = id;
+}
+
+void Person::setWorkHours(double workHours) {
+    *this->workHours = workHours;
+}
+
 
