@@ -11,7 +11,11 @@ private:
     std::string firstName,lastName,id;
     double* workHours;
 
-
+public:
+    Person();
+    Person(std::string firstName,std::string lastName,std::string id, double workHours);
+    ~Person();
+    Person(const Person& old_obj);
 
 
 };
