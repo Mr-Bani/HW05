@@ -77,4 +77,11 @@ void Person::setWorkHours(double workHours) {
     *this->workHours = workHours;
 }
 
+void Person::operator=(Person old_obj){
+    this->workHours = new double (*old_obj.workHours);
+    this->firstName = old_obj.firstName;
+    this->lastName = old_obj.lastName;
+    this->id = old_obj.id;
+}
+
 
