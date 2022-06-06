@@ -3,4 +3,4 @@ project(Tamrin5)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Tamrin5 main.cpp)
+add_executable(Tamrin5 main.cpp Course.cpp Course.h)
