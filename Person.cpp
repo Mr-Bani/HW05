@@ -4,6 +4,8 @@
 
 #include "Person.h"
 #include <iostream>
+#include <regex>
+
 using namespace std;
 Person::Person() {
     workHours = new double;
@@ -82,6 +84,15 @@ void Person::operator=(Person old_obj){
     this->firstName = old_obj.firstName;
     this->lastName = old_obj.lastName;
     this->id = old_obj.id;
+}
+
+bool Person::validate() {
+string reg = "^([86-99]{0,2}|00)\\D{1,3}([0-4]{1,5}|[6-9]{1,5})$";
+
+    if(regex_match(this->id,regex(reg))){
+        return true;
+    }
+    return false;
 }
 
 

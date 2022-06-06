@@ -1,9 +1,10 @@
 #include <iostream>
 #include "Course.h"
+#include "Person.h"
 using namespace std;
 
 int main() {
-    Course course("ali",2,3);
-    cin>>course;
-    cout<<course;
+    Person p("ali","ahmadi","88d3353",22);
+    cout<<p.validate();
+
 }
