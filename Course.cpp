@@ -39,3 +39,27 @@ std::istream &operator>>(istream &is, Course &course) {
     return is;
 }
 
+const string &Course::getName() const {
+    return name;
+}
+
+int Course::getUnit() const {
+    return unit;
+}
+
+double *Course::getMark() const {
+    return mark;
+}
+
+void Course::setName(const string &name) {
+    this->name = name;
+}
+
+void Course::setUnit(int unit) {
+    this->unit = unit;
+}
+
+void Course::setMark(double mark) {
+    *this->mark = mark;
+}
+

@@ -9,6 +9,7 @@
 #include <iostream>
 
 class Course {
+private:
 std::string name;
 int unit;
 double* mark;
@@ -20,6 +21,17 @@ Course(const Course& old_obj);
 friend std::ostream& operator << (std::ostream& os, const Course course);
 friend std::istream& operator >> (std::istream& is, Course& course);
 
+    const std::string &getName() const;
+
+    int getUnit() const;
+
+    double *getMark() const;
+
+    void setName(const std::string &name);
+
+    void setUnit(int unit);
+
+    void setMark(double mark);
 };
 
 
