@@ -17,6 +17,8 @@ Course(std::string name,int unit=0,double mark=0);
 Course();
 Course(const Course& old_obj);
 ~Course();
+friend std::ostream& operator << (std::ostream& os, const Course course);
+friend std::istream& operator >> (std::istream& is, Course& course);
 
 };
 

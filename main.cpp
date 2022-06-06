@@ -1,6 +1,9 @@
 #include <iostream>
+#include "Course.h"
+using namespace std;
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    Course course("ali",2,3);
+    cin>>course;
+    cout<<course;
 }
