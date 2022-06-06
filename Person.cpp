@@ -96,4 +96,9 @@ string reg = "^([86-99]{0,2}|00)\\D{1,3}([0-4]{1,5}|[6-9]{1,5})$";
     return false;
 }
 
+double Person::calculateSalary() {
+    return 10*1000*(*workHours);
+}
+
+
 
