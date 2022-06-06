@@ -7,14 +7,15 @@
 #include <regex>
 
 using namespace std;
-Person::Person() {
-    workHours = new double;
-}
 
 Person::Person(std::string firstName, std::string lastName, std::string id, double workHours) {
     this->firstName = firstName;
     this->lastName = lastName;
     this->id = id;
+    if(!validate()){
+        cout<<"id is not valid"<<endl;
+        exit(0);
+    };
     this->workHours = new double(workHours);
 }
 

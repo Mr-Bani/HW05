@@ -5,6 +5,5 @@ using namespace std;
 
 int main() {
     Person p("ali","ahmadi","88d3353",22);
-    cout<<p.validate();
 
 }
