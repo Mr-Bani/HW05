@@ -3,7 +3,8 @@
 //
 
 #include "Person.h"
-
+#include <iostream>
+using namespace std;
 Person::Person() {
     workHours = new double;
 }
@@ -25,4 +26,23 @@ Person::Person(const Person &old_obj) {
     this->lastName = old_obj.lastName;
     this->id = old_obj.id;
 }
+
+std::ostream &operator<<(std::ostream &os, const Person person) {
+    os<<"Name: "<<person.firstName<<" "<<person.lastName<<"\n id:"<<person.id;
+    os<<"\n Work Hours: "<<*person.workHours;
+    return os;
+}
+
+std::istream &operator>>(std::istream &is, Person &person) {
+    cout<<"Enter first name:\n";
+    is>>person.firstName;
+    cout<<"Enter last name:\n";
+    is>>person.lastName;
+    cout<<"Enter id:\n";
+    is>>person.id;
+    cout<<"Enter work hours:\n";
+    is>>*person.workHours;
+    return is;
+}
+
 
