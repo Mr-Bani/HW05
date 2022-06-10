@@ -14,6 +14,7 @@ private:
     std::string FieldOfStudy;
     int numOfCourses;
 
+
 };
 
 

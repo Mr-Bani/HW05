@@ -12,7 +12,6 @@ private:
     double* workHours;
 
 public:
-    Person();
     Person(std::string firstName,std::string lastName,std::string id, double workHours);
     ~Person();
     Person(const Person& old_obj);
@@ -34,6 +33,12 @@ public:
     void setId(const std::string &id);
 
     void setWorkHours(double workHours);
+
+    void operator = (Person old_obj);
+
+    bool validate();
+
+    double calculateSalary();
 
 
 };
