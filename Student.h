@@ -4,15 +4,30 @@
 
 #ifndef TAMRIN5_STUDENT_H
 #define TAMRIN5_STUDENT_H
+
 #include "Person.h"
 #include "Course.h"
 #include "string"
 
-class Student: public Person{
+class Student : public Person {
 private:
-    Course* courses;
+    Course *courses;
     std::string FieldOfStudy;
     int numOfCourses;
+
+public:
+    Student(std::string firstName, std::string lastName , std::string id ,double workHours,std::string FieldOfStudy,int numOfCourses,Course* courses);
+    Student(const Student& old_obj);
+    ~Student();
+    friend std::ostream& operator << (std::ostream& os, const Student student);
+
+    void setFieldOfStudy(const std::string &fieldOfStudy);
+
+    void setNumOfCourses(int numOfCourses);
+
+    void setCourses(int numberOfCourses,Course *courses);
+
+    friend std::istream& operator >> (std::istream& is, Student& studnet);
 
 
 };

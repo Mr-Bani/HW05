@@ -19,9 +19,6 @@ Person::Person(std::string firstName, std::string lastName, std::string id, doub
     this->workHours = new double(workHours);
 }
 
-Person::~Person() {
-    delete workHours;
-}
 
 Person::Person(const Person &old_obj) {
     this->workHours = new double(*old_obj.workHours);
@@ -99,6 +96,20 @@ string reg = "^(([8-9][6-9])|([9][0-9])|00)(\\D{1,3})(([0-3])|([7-9])){5}$";
 double Person::calculateSalary() {
     return 10*1000*(*workHours);
 }
+
+Person::~Person() {
+    cout<<"Person des"<<endl;
+    delete workHours;
+
+}
+
+Person &Person::operator=(const Person &old_obj) {
+    this->workHours = new double (*old_obj.workHours);
+    this->id = old_obj.id;
+    this->lastName = old_obj.lastName;
+    this->firstName = old_obj.firstName;
+}
+
 
 
 

@@ -5,7 +5,7 @@
 #include "Course.h"
 using namespace std;
 Course::Course() {
-    this->mark = new double ;
+    this->mark = new double();
 }
 
 Course::Course(std::string name, int unit, double mark) {
@@ -21,11 +21,12 @@ Course::Course(const Course &old_obj) {
 }
 
 Course::~Course() {
-    delete this->mark;
+    cout<<"Course des"<<endl;
+    delete[] this->mark;
 }
 
 std::ostream& operator << (std::ostream& os, const Course course){
-os<<"Name: "<<course.name<<"  units: "<<course.unit<<"  mark:"<<*course.mark;
+os<<"Name: "<<course.name<<"  units: "<<course.unit<<"  mark:"<<*course.mark<<endl;
     return os;
 }
 
@@ -61,5 +62,12 @@ void Course::setUnit(int unit) {
 
 void Course::setMark(double mark) {
     *this->mark = mark;
+}
+
+Course &Course::operator=(const Course &old_obj) {
+    this->mark = new double (*old_obj.mark);
+    this->name = old_obj.name;
+    this->unit = old_obj.unit;
+    return *this;
 }
 
