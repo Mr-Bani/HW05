@@ -10,6 +10,11 @@ using namespace std;
 
 Professor::Professor(std::string firstName, std::string lastName, std::string id, double workHours, std::string title) :
         Person(firstName, lastName, id, workHours) {
+    if(!validate()){
+        cout<<"id is not valid as a professor"<<endl;
+        exit(0);
+    };
+
     this->title = title;
 }
 
