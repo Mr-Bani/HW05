@@ -23,6 +23,8 @@ public:
 
     friend std::ostream& operator << (std::ostream& os, const Professor professor);
     friend std::istream& operator >> (std::istream& is, Professor& professor);
+
+    bool validate();
 };
 
 
