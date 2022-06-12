@@ -36,8 +36,8 @@ Student::~Student() {
 }
 
 std::ostream &operator<<(ostream &os, const Student student) {
-    os << "Name: " << student.getFirstName() << " " << student.getLastName() << "\n id:" << student.getId();
-    os << "\n Work Hours: " << student.getWorkHours() << endl;
+    os << "Name: " << student.getFirstName() << " " << student.getLastName() << "\n id:" << student.getId()<<endl;
+    os << "Work Hours: " << student.getWorkHours() << endl;
     os << "Field of Study: " << student.FieldOfStudy << endl;
     os << "Number of Courses: " << student.numOfCourses << endl;
     os << "Courses: ";
@@ -60,6 +60,8 @@ std::istream &operator>>(istream &is, Student &studnet) {
     is >> workHours;
     studnet.setFirstName(firstName);
     studnet.setLastName(lastName);
+    studnet.setId(id);
+    studnet.setWorkHours(workHours);
 
     cout << "Enter field of study: \n";
     cin >> fieldOfStudy;
@@ -72,7 +74,10 @@ std::istream &operator>>(istream &is, Student &studnet) {
         cin >> tmp;
         courses[i] = tmp;
     }
+    studnet.setFieldOfStudy(fieldOfStudy);
+    studnet.setNumOfCourses(numberOfCourses);
     studnet.setCourses(numberOfCourses, courses);
+
 
     return is;
 }

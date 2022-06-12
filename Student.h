@@ -20,6 +20,7 @@ public:
     Student(const Student& old_obj);
     ~Student();
     friend std::ostream& operator << (std::ostream& os, const Student student);
+    friend std::istream& operator >> (std::istream& is, Student& studnet);
 
     void setFieldOfStudy(const std::string &fieldOfStudy);
 
@@ -27,7 +28,7 @@ public:
 
     void setCourses(int numberOfCourses,Course *courses);
 
-    friend std::istream& operator >> (std::istream& is, Student& studnet);
+
 
     bool validate();
 
