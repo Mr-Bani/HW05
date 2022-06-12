@@ -18,12 +18,17 @@ Student::Student(string firstName, string lastName, string id, double workHours,
 }
 
 Student::Student(const Student &old_obj) : Person(old_obj) {
+    if(!validate()){
+        cout<<"id is not valid as a student."<<endl;
+        exit(0);
+    };
     this->numOfCourses = old_obj.numOfCourses;
     this->FieldOfStudy = old_obj.FieldOfStudy;
     this->courses = new Course[old_obj.numOfCourses];
     for (int i = 0; i < numOfCourses; i++) {
         this->courses[i] = old_obj.courses[i];
     }
+
 }
 
 Student::~Student() {
