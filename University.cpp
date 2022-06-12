@@ -26,3 +26,17 @@ University::University(const University& old_obj){
     this->professors = new Professor*[old_obj.numOfProfessors];
     this->students = new Student*[old_obj.numOfStudents];
 }
+
+std::ostream &University::operator<<(std::ostream &os) {
+
+}
+
+/*void University::sort() {
+    for(int i=0;i<numOfStudents;i++){
+        if()
+    }
+
+
+}*/
+
+

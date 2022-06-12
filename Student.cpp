@@ -8,20 +8,20 @@
 using namespace std;
 
 Student::Student(string firstName, string lastName, string id, double workHours, std::string FieldOfStudy,
-                 int numOfCourses, Course *courses) : Person(firstName, lastName, id, workHours) {
+                 int numOfCourses, Course *courses) :Person(firstName, lastName, id, workHours){
     this->FieldOfStudy = FieldOfStudy;
     this->courses = new Course[numOfCourses];
     this->numOfCourses = numOfCourses;
     for (int i = 0; i < numOfCourses; i++) {
         this->courses[i] = courses[i];
     }
-}
-
-Student::Student(const Student &old_obj) : Person(old_obj) {
     if (!validate()) {
         cout << "id is not valid as a student." << endl;
         exit(0);
     };
+}
+
+Student::Student(const Student &old_obj) : Person(old_obj) {
     this->numOfCourses = old_obj.numOfCourses;
     this->FieldOfStudy = old_obj.FieldOfStudy;
     this->courses = new Course[old_obj.numOfCourses];
@@ -77,8 +77,6 @@ std::istream &operator>>(istream &is, Student &studnet) {
     studnet.setFieldOfStudy(fieldOfStudy);
     studnet.setNumOfCourses(numberOfCourses);
     studnet.setCourses(numberOfCourses, courses);
-
-
     return is;
 }
 
@@ -130,6 +128,5 @@ double Student::calculateSalary() {
 }
 
 Student::Student() :Person(){
-
 }
 
