@@ -15,7 +15,7 @@ Professor::Professor(std::string firstName, std::string lastName, std::string id
         exit(0);
     };
 
-    this->title = title;
+    setTitle(title);
 }
 
 std::ostream &operator<<(std::ostream &os, const Professor professor) {
@@ -55,9 +55,17 @@ const string &Professor::getTitle() const {
 }
 
 void Professor::setTitle(const string &title) {
-    Professor::title = title;
-}
+    for (int i = 0; i < 4; i++) {
+        if (title == titles[i]) {
+            break;
+        }
+        if(i==3){
+            cout<<"Not a valid title: "<<title;
+            exit(0);
+        }
 
+    }
+}
 bool Professor::validate() {
     if (Person::validate()) {
         if (this->getId()[2] == '#' && this->getId().length()==8) {
@@ -69,4 +77,16 @@ bool Professor::validate() {
     } else {
         return false;
     }
+}
+
+double Professor::calculateSalary() {
+    double experience = 100 - stoi(getId().substr(0, 2));
+    double base = 50*1000;
+    for(int i=0;i<4;i++){
+        if(titles[i]==this->title){
+            base+=(i+1)*10*1000;
+        }
+    }
+    base += experience * 2000;
+    return base*(*getWorkHours());
 }

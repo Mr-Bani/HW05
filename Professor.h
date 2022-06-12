@@ -25,6 +25,8 @@ public:
     friend std::istream& operator >> (std::istream& is, Professor& professor);
 
     bool validate();
+
+    double calculateSalary();
 };
 
 
