@@ -18,8 +18,8 @@ Student::Student(string firstName, string lastName, string id, double workHours,
 }
 
 Student::Student(const Student &old_obj) : Person(old_obj) {
-    if(!validate()){
-        cout<<"id is not valid as a student."<<endl;
+    if (!validate()) {
+        cout << "id is not valid as a student." << endl;
         exit(0);
     };
     this->numOfCourses = old_obj.numOfCourses;
@@ -90,5 +90,27 @@ void Student::setFieldOfStudy(const string &fieldOfStudy) {
 
 void Student::setNumOfCourses(int numOfCourses) {
     Student::numOfCourses = numOfCourses;
+}
+
+bool Student::validate() {
+    if (Person::validate()) {
+        if (this->getId()[2] == '*') {
+            return true;
+        } else {}
+        return false;
+    } else {
+        return false;
+    }
+}
+
+double Student::gpa() {
+    double totalUnits = 0;
+    double totalMark = 0;
+
+    for (int i = 0; i < this->numOfCourses; i++) {
+        totalUnits += courses[i].getUnit();
+        totalMark += (*courses[i].getMark()) * courses[i].getUnit();
+    }
+    return totalMark/totalUnits;
 }
 
