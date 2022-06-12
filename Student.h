@@ -32,6 +32,8 @@ public:
     bool validate();
 
     double gpa();
+
+    double calculateSalary();
 };
 
 

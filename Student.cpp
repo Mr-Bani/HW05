@@ -114,3 +114,13 @@ double Student::gpa() {
     return totalMark/totalUnits;
 }
 
+double Student::calculateSalary() {
+    double salary = 20000*(*getWorkHours());
+    if(gpa()>17){
+        salary+=salary/10;
+    }
+    return salary;
+
+
+}
+
