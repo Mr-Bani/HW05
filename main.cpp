@@ -29,9 +29,9 @@ int main() {
     double* ab = new double;
     double* bb = new double();
     //Person p("ali","ahmadi","99dd33333",22);
-    //Student s("ali", "akbari", "99*d33333", 33, "akbari", 3, a);
+    Student s("ali", "akbari", "99*d33333", 33, "akbari", 3, a);
     //cout<<s.calculateSalary();
-    cout<<validate("99aaa22222");
+    cout<<s.validate();
 
 
 

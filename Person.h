@@ -14,7 +14,7 @@ private:
 public:
     Person(std::string firstName,std::string lastName,std::string id, double workHours);
     Person();
-    virtual ~Person();
+    ~Person();
     Person(const Person& old_obj);
     friend std::ostream& operator << (std::ostream& os, const Person person);
     friend std::istream& operator >> (std::istream& is, Person& person);

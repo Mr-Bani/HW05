@@ -7,8 +7,12 @@ class University {
 private:
     int budget,numOfStudents,numOfProfessors;
 
-    Professor* professors = new Professor[numOfProfessors];
-    Student* students = new Student[numOfStudents];
+    Professor** professors;
+    Student** students;
+
+    University(int budget,int numOfStudents,int numOfProfessors,Professor* professors,Student* students);
+    ~University();
+    University(const University& old_obj);
 
 
 
