@@ -12,7 +12,8 @@ class Professor : public Person {
 
 private:
     std::string title;
-
+public:
+    Professor(std::string firstName, std::string lastName, std::string id, double workHours,std::string title);
 };
 
 
