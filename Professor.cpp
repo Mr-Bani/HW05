@@ -90,3 +90,6 @@ double Professor::calculateSalary() {
     base += experience * 2000;
     return base*(*getWorkHours());
 }
+
+Professor::Professor() :Person(){
+}

@@ -2,9 +2,19 @@
 #include "Course.h"
 #include "Person.h"
 #include "Student.h"
+#include "regex"
+
 
 using namespace std;
 
+bool validate(string id) {
+    string reg = "(^[8][4-9]|[9][0-9]| [0][0])\\D{1,3}([0-3]|[7-9]){5}$";
+
+    if(regex_match(id,regex(reg))){
+        return true;
+    }
+    return false;
+}
 int main() {
     //Person p("ali","ahmadi","99dd33333",22);
     Course a[3];
@@ -21,6 +31,7 @@ int main() {
     //Person p("ali","ahmadi","99dd33333",22);
     //Student s("ali", "akbari", "99*d33333", 33, "akbari", 3, a);
     //cout<<s.calculateSalary();
+    cout<<validate("99aaa22222");
 
 
 

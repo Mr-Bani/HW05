@@ -16,6 +16,7 @@ public:
     std::string titles[4] = {"Instructor" ,"Assistant Professor", "Associate Professor", "Professor"};
 
     Professor(std::string firstName, std::string lastName, std::string id, double workHours,std::string title);
+    Professor();
 
     const std::string &getTitle() const;
 

@@ -17,6 +17,7 @@ private:
 
 public:
     Student(std::string firstName, std::string lastName , std::string id ,double workHours,std::string FieldOfStudy,int numOfCourses,Course* courses);
+    Student();
     Student(const Student& old_obj);
     ~Student();
     friend std::ostream& operator << (std::ostream& os, const Student student);

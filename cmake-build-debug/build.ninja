@@ -91,6 +91,12 @@ build CMakeFiles/Tamrin5.dir/Professor.cpp.obj: CXX_COMPILER__Tamrin5_Debug E$:/
   OBJECT_DIR = CMakeFiles\Tamrin5.dir
   OBJECT_FILE_DIR = CMakeFiles\Tamrin5.dir
 
+build CMakeFiles/Tamrin5.dir/University.cpp.obj: CXX_COMPILER__Tamrin5_Debug E$:/cpp/Tamrin5/University.cpp || cmake_object_order_depends_target_Tamrin5
+  DEP_FILE = CMakeFiles\Tamrin5.dir\University.cpp.obj.d
+  FLAGS = -g -std=gnu++14
+  OBJECT_DIR = CMakeFiles\Tamrin5.dir
+  OBJECT_FILE_DIR = CMakeFiles\Tamrin5.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Tamrin5
@@ -99,7 +105,7 @@ build CMakeFiles/Tamrin5.dir/Professor.cpp.obj: CXX_COMPILER__Tamrin5_Debug E$:/
 #############################################
 # Link the executable Tamrin5.exe
 
-build Tamrin5.exe: CXX_EXECUTABLE_LINKER__Tamrin5_Debug CMakeFiles/Tamrin5.dir/main.cpp.obj CMakeFiles/Tamrin5.dir/Course.cpp.obj CMakeFiles/Tamrin5.dir/Person.cpp.obj CMakeFiles/Tamrin5.dir/Student.cpp.obj CMakeFiles/Tamrin5.dir/Professor.cpp.obj
+build Tamrin5.exe: CXX_EXECUTABLE_LINKER__Tamrin5_Debug CMakeFiles/Tamrin5.dir/main.cpp.obj CMakeFiles/Tamrin5.dir/Course.cpp.obj CMakeFiles/Tamrin5.dir/Person.cpp.obj CMakeFiles/Tamrin5.dir/Student.cpp.obj CMakeFiles/Tamrin5.dir/Professor.cpp.obj CMakeFiles/Tamrin5.dir/University.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Tamrin5.dir

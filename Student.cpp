@@ -129,3 +129,7 @@ double Student::calculateSalary() {
 
 }
 
+Student::Student() :Person(){
+
+}
+

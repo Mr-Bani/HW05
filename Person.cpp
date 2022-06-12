@@ -85,7 +85,7 @@ void Person::operator=(Person old_obj){
 }
 
 bool Person::validate() {
-string reg = "^(([8-9][6-9])|([9][0-9])|00)(\\D{1,3})(([0-3])|([7-9])){5}$";
+string reg = "^(([8-9][4-9])|([9][0-9])|00)(\\D{1,3})(([0-3])|([7-9])){5}$";
 
     if(regex_match(this->id,regex(reg))){
         return true;
@@ -107,6 +107,10 @@ Person &Person::operator=(const Person &old_obj) {
     this->id = old_obj.id;
     this->lastName = old_obj.lastName;
     this->firstName = old_obj.firstName;
+}
+
+Person::Person() {
+    this->workHours = new double();
 }
 
 
