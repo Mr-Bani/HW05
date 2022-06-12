@@ -16,11 +16,8 @@ int main() {
     //Student f = s;
     double* ab = new double;
     double* bb = new double();
-    *ab = 3.2;
-    *bb = 3.5;
-    cout<<ab<<*ab<<endl;
-    cout<<bb<<*bb<<endl;
     //Person p("ali","ahmadi","99dd33333",22);
-    Student s("ali", "akbari", "99dd33333", 33, "akbari", 2, &b);
+    Student s("ali", "akbari", "99*d33333", 33, "akbari", 2, &b);
+
 
 }

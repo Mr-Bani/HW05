@@ -98,7 +98,6 @@ double Person::calculateSalary() {
 }
 
 Person::~Person() {
-    cout<<"Person des"<<endl;
     delete workHours;
 
 }

@@ -9,7 +9,6 @@ using namespace std;
 
 Student::Student(string firstName, string lastName, string id, double workHours, std::string FieldOfStudy,
                  int numOfCourses, Course *courses) : Person(firstName, lastName, id, workHours) {
-    cout << "Fuck" << endl;
     this->FieldOfStudy = FieldOfStudy;
     this->courses = new Course[numOfCourses];
     this->numOfCourses = numOfCourses;

@@ -21,7 +21,6 @@ Course::Course(const Course &old_obj) {
 }
 
 Course::~Course() {
-    cout<<"Course des"<<endl;
     delete[] this->mark;
 }
 

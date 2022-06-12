@@ -29,6 +29,18 @@ public:
 
     friend std::istream& operator >> (std::istream& is, Student& studnet);
 
+    bool validate(){
+        if(Person::validate()){
+            if(this->getId()[2]=='*'){
+                return true;
+            }
+            else{}
+            return false;
+        }
+        else{
+            return false;
+        }
+    }
 
 };
 
