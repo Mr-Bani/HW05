@@ -8,7 +8,7 @@
 using namespace std;
 
 Student::Student(string firstName, string lastName, string id, double workHours, std::string FieldOfStudy,
-                 int numOfCourses, Course *courses) :Person(firstName, lastName, id, workHours){
+                 int numOfCourses, Course *courses) : Person(firstName, lastName, id, workHours) {
     this->FieldOfStudy = FieldOfStudy;
     this->courses = new Course[numOfCourses];
     this->numOfCourses = numOfCourses;
@@ -36,11 +36,11 @@ Student::~Student() {
 }
 
 std::ostream &operator<<(ostream &os, const Student student) {
-    os << "Name: " << student.getFirstName() << " " << student.getLastName() << "\n id:" << student.getId()<<endl;
+    os << "Name: " << student.getFirstName() << " " << student.getLastName() << "\nID:" << student.getId() << endl;
     os << "Work Hours: " << student.getWorkHours() << endl;
     os << "Field of Study: " << student.FieldOfStudy << endl;
     os << "Number of Courses: " << student.numOfCourses << endl;
-    os << "Courses: ";
+    os << "Courses: \n";
     for (int i = 0; i < student.numOfCourses; i++) {
         cout << student.courses[i];
     }
@@ -114,20 +114,20 @@ double Student::gpa() {
         totalUnits += courses[i].getUnit();
         totalMark += (*courses[i].getMark()) * courses[i].getUnit();
     }
-    return totalMark/totalUnits;
+    return totalMark / totalUnits;
 }
 
 double Student::calculateSalary() {
-    double salary = 20000*(getWorkHours());
-    if(gpa()>17){
-        salary+=salary/10;
+    double salary = 20000 * (getWorkHours());
+    if (gpa() > 17) {
+        salary += salary / 10;
     }
     return salary;
 
 
 }
 
-Student::Student() :Person(){
+Student::Student() : Person() {
 }
 
 const string &Student::getFieldOfStudy() const {
@@ -152,7 +152,7 @@ Student &Student::operator=(const Student &old_obj) {
     this->setWorkHours(old_obj.getWorkHours());
     this->setId(old_obj.getId());
     this->setFieldOfStudy(old_obj.FieldOfStudy);
-    this->setCourses(old_obj.getNumOfCourses(),old_obj.getCourses());
+    this->setCourses(old_obj.getNumOfCourses(), old_obj.getCourses());
     this->setNumOfCourses(old_obj.numOfCourses);
 }
 

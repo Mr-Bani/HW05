@@ -12,24 +12,20 @@ private:
     Professor** professors;
     Student** students;
 
-    University(int budget,int numOfStudents,int numOfProfessors,Professor* professors,Student* students);
+public:
+    University(int budget,int numOfStudents,int numOfProfessors,Professor*& professors,Student*& students);
     ~University();
     University(const University& old_obj);
 
     void sort();
-    std::ostream& operator << (std::ostream& os);
-    std::istream& operator >> (std::istream& is);
-
+    friend std::ostream& operator << (std::ostream& os, University& university);
+    friend std::istream& operator >> (std::istream& is, University& university);
     double averageGpa();
-
     double averageGpaOfField(std::string field);
     double averageMarkOfCourse(std::string courseName);
     void printCourses();
     bool isEnoughBudget();
     void saveToFile();
-
-
-
 
 };
 

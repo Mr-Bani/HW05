@@ -13,7 +13,7 @@ Person::Person(std::string firstName, std::string lastName, std::string id, doub
     this->lastName = lastName;
     this->id = id;
     if(!validate()){
-        cout<<"id is not valid"<<endl;
+        cout<<"id is not valid"<<endl<<id<<endl;
         exit(0);
     };
     this->workHours = new double(workHours);
@@ -28,7 +28,7 @@ Person::Person(const Person &old_obj) {
 }
 
 std::ostream &operator<<(std::ostream &os, const Person person) {
-    os<<"Name: "<<person.firstName<<" "<<person.lastName<<"\n id:"<<person.id;
+    os<<"Name: "<<person.firstName<<" "<<person.lastName<<"\nID:"<<person.id;
     os<<"\n Work Hours: "<<*person.workHours;
     return os;
 }

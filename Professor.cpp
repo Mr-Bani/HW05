@@ -11,7 +11,7 @@ using namespace std;
 Professor::Professor(std::string firstName, std::string lastName, std::string id, double workHours, std::string title) :
         Person(firstName, lastName, id, workHours) {
     if(!validate()){
-        cout<<"id is not valid as a professor"<<endl;
+        cout<<"id is not valid as a professor"<<endl<<id<<endl;
         exit(0);
     };
 
@@ -57,6 +57,7 @@ const string &Professor::getTitle() const {
 void Professor::setTitle(const string &title) {
     for (int i = 0; i < 4; i++) {
         if (title == titles[i]) {
+            this->title = title;
             break;
         }
         if(i==3){

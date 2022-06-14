@@ -9,49 +9,40 @@
 
 using namespace std;
 
-University::University(int budget, int numOfStudents, int numOfProfessors, Professor *professors, Student *students) {
+University::University(int budget, int numOfStudents, int numOfProfessors, Professor *&professors, Student *&students) {
     this->budget = budget;
     this->numOfStudents = numOfStudents;
     this->numOfProfessors = numOfProfessors;
     this->professors = new Professor *[numOfProfessors];
+    for (int i = 0; i  < numOfProfessors; i++) {
+        this->professors[i] = &(professors[i]);
+    }
     this->students = new Student *[numOfStudents];
+    for (int i = 0; i < numOfStudents; i++) {
+        this->students[i] = &(students[i]);
+    }
+
 }
 
 University::~University() {
-    for (int i = 0; i < numOfProfessors; i++) {
-        delete[] this->professors[i];
-    }
-    for (int i = 0; i < numOfStudents; i++) {
-        delete[] this->students[i];
-    }
+    delete[] professors;
+    delete[] students;
 }
 
 University::University(const University &old_obj) {
     this->budget = old_obj.budget;
     this->numOfStudents = old_obj.numOfStudents;
     this->numOfProfessors = old_obj.numOfProfessors;
-    this->professors = new Professor *[old_obj.numOfProfessors];
-    this->students = new Student *[old_obj.numOfStudents];
-}
-
-std::ostream &University::operator<<(std::ostream &os) {
-    sort();
-    cout << "Number of students: " << numOfStudents << endl;
-    cout << "Number of professors: " << numOfProfessors << endl;
-    cout << "Budget: " << budget << endl;
-    cout << "-Students-" << endl;
-    printf("%-12s  %-12s \n", "First name", "Last name");
+    this->professors = new Professor *[numOfProfessors];
+    for (int i = 0; i  < numOfProfessors; i++) {
+        this->professors[i] = old_obj.professors[i];
+    }
+    this->students = new Student *[numOfStudents];
     for (int i = 0; i < numOfStudents; i++) {
-        printf("%-12s   %-12s \n", students[i]->getFirstName().c_str(), students[i]->getLastName().c_str());
+        this->students[i] = old_obj.students[i];
     }
-    cout << "-Professors-" << endl;
-    printf("%-12s %-12s %-12s \n", "Title", "First name", "Last name");
-    for (int i = 0; i < numOfProfessors; i++) {
-        printf("%-12s  %-12s  %-12s \n", professors[i]->getTitle().c_str(), professors[i]->getFirstName().c_str(),
-               professors[i]->getLastName().c_str());
-    }
-}
 
+}
 
 void University::sort() {
     for (int i = 0; i < numOfStudents; i++) {
@@ -74,28 +65,6 @@ void University::sort() {
                 swap(professors[i], professors[j]);
             }
     }
-}
-
-std::istream &University::operator>>(istream &is) {
-    cout << "Enter number of students: " << endl;
-    cin >> numOfStudents;
-    cout << "Enter number of professord: " << endl;
-    cin >> numOfProfessors;
-    cout << "Enter budget: " << endl;
-    cin >> budget;
-    cout << "Enter studnets>>>" << endl;
-    students = new Student *[numOfStudents];
-    for (int i = 0; i < numOfStudents; i++) {
-        cin >> *students[i];
-    }
-    cout << "Now Enter professors>>>" << endl;
-    professors = new Professor *[numOfProfessors];
-    for (int i = 0; i < numOfProfessors; i++) {
-        cin >> *professors[i];
-    }
-    cout << "input done !" << endl;
-
-
 }
 
 double University::averageGpa() {
@@ -130,17 +99,16 @@ double University::averageMarkOfCourse(std::string courseName) {
         Course *courses = students[i]->getCourses();
         for (int j = 0; j < students[i]->getNumOfCourses(); j++) {
             if (courses[j].getName() == courseName) {
-                totalMark += *courses[j].getMark();
+                totalMark += *(courses[j].getMark());
                 number++;
-                break;
             }
-        }
+        }}
         if (number == 0) {
-            cout << "No student has this course!";
+            cout << "No student has this course!"<<" " << courseName<<endl;
             return -1;
         }
         return totalMark / number;
-    }
+
 }
 
 void University::printCourses() {
@@ -164,9 +132,9 @@ void University::printCourses() {
             }
         }
     }
-    printf("%-20s %-10s", "Course name", "Average");
+    printf("%-20s %-10s\n", "Course name", "Average");
     for (int i = 0; i < allCourses.size(); i++) {
-        printf("%-20s %-10.4f", allCourses[i].c_str(), courseAverages[i]);
+        printf("%-20s %-10.4f\n", allCourses[i].c_str(), courseAverages[i]);
     }
 
 
@@ -205,13 +173,57 @@ void University::saveToFile() {
         }
     }
     res.fill();
-    res<<"-Top students-\n";
+    res << "-Top students-\n";
     for (int i = 0; i < handlefFields.size(); i++) {
         Student top = tops[i];
-        res<<top.getFirstName()<<" "<<top.getLastName()<<" GPA: "<<to_string(top.gpa())<<" Field of Study: "<<top.getFieldOfStudy()<<"\n";
+        res << top.getFirstName() << " " << top.getLastName() << " GPA: " << to_string(top.gpa()) << " Field of Study: "
+            << top.getFieldOfStudy() << "\n";
     }
 }
 
+std::ostream &operator<<(ostream &os, University& university) {
+    university.sort();
+    cout << "Number of students: " << university.numOfStudents << endl;
+    cout << "Number of professors: " << university.numOfProfessors << endl;
+    cout << "Budget: " << university.budget << endl;
+    cout << "-Students-" << endl;
+    printf("%-12s  %-12s \n", "First name", "Last name");
+
+    for (int i = 0; i < university.numOfStudents; i++) {
+        printf("%-12s   %-12s \n", university.students[i]->getFirstName().c_str(),
+               university.students[i]->getLastName().c_str());
+    }
+    cout << "-Professors-" << endl;
+    printf("%-12s %-12s %-12s \n", "Title", "First name", "Last name");
+    for (int i = 0; i < university.numOfProfessors; i++) {
+        printf("%-12s  %-12s  %-12s \n", university.professors[i]->getTitle().c_str(),
+               university.professors[i]->getFirstName().c_str(),
+               university.professors[i]->getLastName().c_str());
+    }
+    return os;
+}
+
+std::istream &operator>>(istream &is, University &university) {
+    cout << "Enter number of students: " << endl;
+    cin >> university.numOfStudents;
+    cout << "Enter number of professors: " << endl;
+    cin >> university.numOfProfessors;
+    cout << "Enter budget: " << endl;
+    cin >> university.budget;
+    cout << "Enter studnets>>>" << endl;
+    university.students = new Student *[university.numOfStudents];
+    for (int i = 0; i < university.numOfStudents; i++) {
+        cin >> *university.students[i];
+    }
+    cout << "Now Enter professors>>>" << endl;
+    university.professors = new Professor *[university.numOfProfessors];
+    for (int i = 0; i < university.numOfProfessors; i++) {
+        cin >> *university.professors[i];
+    }
+    cout << "input done !" << endl;
+    return is;
+
+}
 
 
 
