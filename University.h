@@ -23,6 +23,7 @@ private:
     double averageGpa();
 
     double averageGpaOfField(std::string field);
+    double averageMarkOfCourse(std::string courseName);
 
 
 

@@ -50,7 +50,6 @@ std::ostream &University::operator<<(std::ostream &os) {
 }
 
 
-
 void University::sort() {
     for (int i = 0; i < numOfStudents; i++) {
         for (int j = i + 1; j < numOfStudents; j++)
@@ -75,51 +74,70 @@ void University::sort() {
 }
 
 std::istream &University::operator>>(istream &is) {
-    cout<<"Enter number of students: "<<endl;
-    cin>>numOfStudents;
-    cout<<"Enter number of professord: "<<endl;
-    cin>>numOfProfessors;
-    cout<<"Enter budget: "<<endl;
-    cin>>budget;
-    cout<<"Enter studnets>>>"<<endl;
-    students = new Student*[numOfStudents];
-    for(int i=0;i<numOfStudents;i++){
-        cin>>*students[i];
+    cout << "Enter number of students: " << endl;
+    cin >> numOfStudents;
+    cout << "Enter number of professord: " << endl;
+    cin >> numOfProfessors;
+    cout << "Enter budget: " << endl;
+    cin >> budget;
+    cout << "Enter studnets>>>" << endl;
+    students = new Student *[numOfStudents];
+    for (int i = 0; i < numOfStudents; i++) {
+        cin >> *students[i];
     }
-    cout<<"Now Enter professors>>>"<<endl;
-    professors = new Professor*[numOfProfessors];
-    for(int i=0;i<numOfProfessors;i++){
-        cin>>*professors[i];
+    cout << "Now Enter professors>>>" << endl;
+    professors = new Professor *[numOfProfessors];
+    for (int i = 0; i < numOfProfessors; i++) {
+        cin >> *professors[i];
     }
-    cout<<"input done !"<<endl;
-
+    cout << "input done !" << endl;
 
 
 }
 
 double University::averageGpa() {
-    double totalMarks=0;
-    for(int i=0;i<numOfStudents;i++){
+    double totalMarks = 0;
+    for (int i = 0; i < numOfStudents; i++) {
         totalMarks += students[i]->gpa();
     }
-    return totalMarks/numOfStudents;
+    return totalMarks / numOfStudents;
 }
 
 double University::averageGpaOfField(std::string field) {
     double totalMark = 0;
-    double number=0;
-    for(int i=0;i<numOfStudents;i++){
-        if(students[i]->getFieldOfStudy()==field){
-            totalMark+=students[i]->gpa();
+    double number = 0;
+    for (int i = 0; i < numOfStudents; i++) {
+        if (students[i]->getFieldOfStudy() == field) {
+            totalMark += students[i]->gpa();
             number++;
         }
     }
-    if(number==0){
-        cout<<"No student with this field";
-        return 0;
+    if (number == 0) {
+        cout << "No student with this field";
+        return -1;
     }
-    return totalMark/number;
+    return totalMark / number;
 
+}
+
+double University::averageMarkOfCourse(std::string courseName) {
+    double totalMark = 0;
+    double number = 0;
+    for(int i=0;i<numOfStudents;i++){
+        Course* courses = students[i]->getCourses();
+        for(int j=0;j<students[i]->getNumOfCourses();j++){
+            if(courses[j].getName() == courseName){
+                totalMark+=*courses[j].getMark();
+                number++;
+                break;
+            }
+        }
+        if(number==0){
+            cout<<"No student has this course!";
+            return -1;
+        }
+        return totalMark/number;
+    }
 }
 
 
