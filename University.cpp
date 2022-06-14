@@ -171,5 +171,19 @@ void University::printCourses() {
 
 }
 
+bool University::isEnoughBudget() {
+    double totalSalary=0;
+    for(int i=0;i<numOfStudents;i++){
+        totalSalary+= students[i]->calculateSalary();
+    }
+    for(int i=0;i<numOfProfessors;i++){
+        totalSalary+=professors[i]->calculateSalary();
+    }
+    if(totalSalary>=budget){
+        return true;
+    }
+    return false;
+}
+
 
 
