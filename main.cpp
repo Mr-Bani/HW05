@@ -133,21 +133,18 @@ int main() {
 
 
     Professor Azade("Azade", "Mansoori", "84#99999", 40, "Professor");
-    Professor Zavar("Sajjad", "Zavar", "99#88888", 2, "Instructor");
-    Professor Salar("Alireza", "Salarian", "86#77777", 20, "Associate Professor");
+    Professor Zavar("Sajjad", "Zavar", "00#88888", 2, "Instructor");
+    Professor Salar("Alireza", "Salarian", "87#77777", 20, "Associate Professor");
     Professor Jalalian("Zahra", "Jalalian", "90#99999", 15, "Instructor");
 
     Student students[13] = {Mahdi, Kaveh, Zeinab, Alireza, Hossein, Amir, AmirHossein, Fateme, Hadi, Iman
     ,Ahmad,Akbar,Sajjad};
 
-    Student students_tmp[4] = {Akbar,Sajjad,Ahmad,Hossein};
-
-    Professor professors [] = {Azade,Zavar,Salar,Jalalian};
+    Professor professors [] = {Salar,Zavar,Jalalian,Azade};
     Professor* pp = professors;
     Student* sp = students;
 
     University Kharazmi(300*1000,13,4,pp,sp);
-
     cout<<Kharazmi;
 
 

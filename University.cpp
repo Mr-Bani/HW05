@@ -14,7 +14,7 @@ University::University(int budget, int numOfStudents, int numOfProfessors, Profe
     this->numOfStudents = numOfStudents;
     this->numOfProfessors = numOfProfessors;
     this->professors = new Professor *[numOfProfessors];
-    for (int i = 0; i  < numOfProfessors; i++) {
+    for (int i = 0; i < numOfProfessors; i++) {
         this->professors[i] = &(professors[i]);
     }
     this->students = new Student *[numOfStudents];
@@ -34,7 +34,7 @@ University::University(const University &old_obj) {
     this->numOfStudents = old_obj.numOfStudents;
     this->numOfProfessors = old_obj.numOfProfessors;
     this->professors = new Professor *[numOfProfessors];
-    for (int i = 0; i  < numOfProfessors; i++) {
+    for (int i = 0; i < numOfProfessors; i++) {
         this->professors[i] = old_obj.professors[i];
     }
     this->students = new Student *[numOfStudents];
@@ -45,27 +45,46 @@ University::University(const University &old_obj) {
 }
 
 void University::sort() {
-    for (int i = 0; i < numOfStudents; i++) {
-        for (int j = i + 1; j < numOfStudents; j++)
-            if (students[i]->getId() > students[j]->getId()) {
-                if (students[j]->getId()[0] != '0') {
-                    swap(students[i], students[j]);
-                } else {
-                    string tmp_id = "999" + students[j]->getId().substr(2);
-                    if (students[i]->getId() > tmp_id) {
-                        swap(students[i], students[j]);
-                    }
+    for (int i = 0; i < numOfProfessors; i++) {
+        int sal1 = stoi(professors[i]->getId().substr(0, 2));
+        if (sal1 == 0) { sal1 = 100; }
+
+        for (int j = i + 1; j < numOfProfessors; j++) {
+            int sal2 = stoi(professors[j]->getId().substr(0, 2));
+            if (sal2 == 0) { sal2 = 100; }
+            if (sal1 > sal2) {
+                swap(professors[i], professors[j]);
+            } else if (sal1 == sal2) {
+                if (professors[i]->getLastName() > professors[j]->getLastName()) {
+                    swap(professors[i], professors[j]);
                 }
             }
+
+        }
     }
 
-    for (int i = 0; i < numOfProfessors; i++) {
-        for (int j = i + 1; j < numOfProfessors; j++)
-            if (stoi(professors[i]->getId().substr(0, 2)) > stoi(professors[j]->getId().substr(0, 2))) {
-                swap(professors[i], professors[j]);
+    for (int i = 0; i < numOfStudents-1; i++) {
+
+
+
+        for (int j = 0; j < numOfStudents-i-1; j++) {
+            int sal1 = stoi(students[j]->getId().substr(0, 2));
+            if (sal1 == 0) { sal1 = 100; }
+            int sal2 = stoi(students[j+1]->getId().substr(0, 2));
+            if (sal2 == 0) { sal2 = 100; }
+            if (sal1 > sal2) {
+                swap(students[j], students[j+1]);
+                cout<<"greater: "<<sal1<<" smaller: "<<sal2<<endl;
+            } else if (sal1 == sal2) {
+                if (students[j]->getLastName() > students[j+1]->getLastName()) {
+                    swap(students[j], students[j+1]);
+                }
             }
+
+        }
     }
 }
+
 
 double University::averageGpa() {
     double totalMarks = 0;
@@ -102,12 +121,13 @@ double University::averageMarkOfCourse(std::string courseName) {
                 totalMark += *(courses[j].getMark());
                 number++;
             }
-        }}
-        if (number == 0) {
-            cout << "No student has this course!"<<" " << courseName<<endl;
-            return -1;
         }
-        return totalMark / number;
+    }
+    if (number == 0) {
+        cout << "No student has this course!" << " " << courseName << endl;
+        return -1;
+    }
+    return totalMark / number;
 
 }
 
@@ -181,7 +201,7 @@ void University::saveToFile() {
     }
 }
 
-std::ostream &operator<<(ostream &os, University& university) {
+std::ostream &operator<<(ostream &os, University &university) {
     university.sort();
     cout << "Number of students: " << university.numOfStudents << endl;
     cout << "Number of professors: " << university.numOfProfessors << endl;
