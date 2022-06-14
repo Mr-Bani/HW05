@@ -35,7 +35,7 @@ int main() {
             Course("Islamic Republic", 2, 19),
             Course("Analytical History", 2, 20),
     };
-    Course ZeinabCourse[7] = {
+    Course ArooshaCourse[7] = {
             Course("Math", 3, 18),
             Course("AP", 3, 20),
             Course("Physics", 3, 18),
@@ -117,7 +117,7 @@ int main() {
     Student Mahdi("Mahdi", "Bani", "00*zz11077", 30, "Computer Engineering", 7, MahdiCourse);
     Student Kaveh("Kaveh", "Moradian", "85*kk22222", 25, "Computer Engineering", 5, KavehCourse);
     Student Amir("Amir", "Mehrzad", "98*mm11111", 24, "Computer Engineering", 7, AmirCourse);
-    Student Zeinab("Zeinab", "Dehghani", "00*mm22000", 35, "Computer Engineering", 7, ZeinabCourse);
+    Student Aroosha("Aroosha", "Hajizadeh", "00*mm22000", 35, "Computer Engineering", 7, ArooshaCourse);
     Student AmirHossein("AmirHossein", "Barati", "86*li23233", 5, "Computer Engineering", 5, AmirHosseinCourse);
     Student Alireza("Alireza", "Zarinfar", "99*li23233", 20, "Computer Engineering", 5, AlirezaCourse);
 
@@ -137,7 +137,7 @@ int main() {
     Professor Salar("Alireza", "Salarian", "87#77777", 20, "Associate Professor");
     Professor Jalalian("Zahra", "Jalalian", "90#99999", 15, "Instructor");
 
-    Student students[13] = {Mahdi, Kaveh, Zeinab, Alireza, Hossein, Amir, AmirHossein, Fateme, Hadi, Iman
+    Student students[13] = {Mahdi, Kaveh, Aroosha, Alireza, Hossein, Amir, AmirHossein, Fateme, Hadi, Iman
     ,Ahmad,Akbar,Sajjad};
 
     Professor professors [] = {Salar,Zavar,Jalalian,Azade};
