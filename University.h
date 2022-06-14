@@ -17,7 +17,7 @@ private:
 
     void sort();
     std::ostream& operator << (std::ostream& os);
-    //std::istream& operator >> (std::istream& is)
+    std::istream& operator >> (std::istream& is);
 
 
 

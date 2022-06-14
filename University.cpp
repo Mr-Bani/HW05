@@ -1,42 +1,100 @@
 #include "University.h"
 #include "Professor.h"
 #include "Student.h"
+#include <string>
+#include "Person.h"
 
-University::University(int budget,int numOfStudents,int numOfProfessors,Professor* professors,Student* students) {
+using namespace std;
+
+University::University(int budget, int numOfStudents, int numOfProfessors, Professor *professors, Student *students) {
     this->budget = budget;
     this->numOfStudents = numOfStudents;
     this->numOfProfessors = numOfProfessors;
-    this->professors = new Professor*[numOfProfessors];
-    this->students = new Student*[numOfStudents];
+    this->professors = new Professor *[numOfProfessors];
+    this->students = new Student *[numOfStudents];
 }
 
 University::~University() {
-for(int i=0;i<numOfProfessors;i++){
-    delete [] this->professors[i];
-}
-for(int i=0;i<numOfStudents;i++){
-    delete[] this->students[i];
-}
+    for (int i = 0; i < numOfProfessors; i++) {
+        delete[] this->professors[i];
+    }
+    for (int i = 0; i < numOfStudents; i++) {
+        delete[] this->students[i];
+    }
 }
 
-University::University(const University& old_obj){
+University::University(const University &old_obj) {
     this->budget = old_obj.budget;
     this->numOfStudents = old_obj.numOfStudents;
     this->numOfProfessors = old_obj.numOfProfessors;
-    this->professors = new Professor*[old_obj.numOfProfessors];
-    this->students = new Student*[old_obj.numOfStudents];
+    this->professors = new Professor *[old_obj.numOfProfessors];
+    this->students = new Student *[old_obj.numOfStudents];
 }
 
 std::ostream &University::operator<<(std::ostream &os) {
-
+    sort();
+    cout << "Number of students: " << numOfStudents << endl;
+    cout << "Number of professors: " << numOfProfessors << endl;
+    cout << "Budget: " << budget << endl;
+    cout << "-Students-" << endl;
+    printf("%12s  %12s \n", "First name", "Last name");
+    for (int i = 0; i < numOfStudents; i++) {
+        printf("%12s   %12s \n", students[i]->getFirstName().c_str(), students[i]->getLastName().c_str());
+    }
+    cout << "-Professors-" << endl;
+    printf("%12s %12s %12s \n", "Title", "First name", "Last name");
+    for (int i = 0; i < numOfProfessors; i++) {
+        printf("%12s  %12s  %12s \n", professors[i]->getTitle().c_str(), professors[i]->getFirstName().c_str(),
+               professors[i]->getLastName().c_str());
+    }
 }
 
-/*void University::sort() {
-    for(int i=0;i<numOfStudents;i++){
-        if()
+
+
+void University::sort() {
+    for (int i = 0; i < numOfStudents; i++) {
+        for (int j = i + 1; j < numOfStudents; j++)
+            if (students[i]->getId() > students[j]->getId()) {
+                if (students[j]->getId()[0] != '0') {
+                    swap(students[i], students[j]);
+                } else {
+                    string tmp_id = "999" + students[j]->getId().substr(2);
+                    if (students[i]->getId() > tmp_id) {
+                        swap(students[i], students[j]);
+                    }
+                }
+            }
     }
 
+    for (int i = 0; i < numOfProfessors; i++) {
+        for (int j = i + 1; j < numOfProfessors; j++)
+            if (stoi(professors[i]->getId().substr(0, 2)) > stoi(professors[j]->getId().substr(0, 2))) {
+                swap(professors[i], professors[j]);
+            }
+    }
+}
 
-}*/
+std::istream &University::operator>>(istream &is) {
+    cout<<"Enter number of students: "<<endl;
+    cin>>numOfStudents;
+    cout<<"Enter number of professord: "<<endl;
+    cin>>numOfProfessors;
+    cout<<"Enter budget: "<<endl;
+    cin>>budget;
+    cout<<"Enter studnets>>>"<<endl;
+    students = new Student*[numOfStudents];
+    for(int i=0;i<numOfStudents;i++){
+        cin>>*students[i];
+    }
+    cout<<"Now Enter professors>>>"<<endl;
+    professors = new Professor*[numOfProfessors];
+    for(int i=0;i<numOfProfessors;i++){
+        cin>>*professors[i];
+    }
+    cout<<"input done !"<<endl;
+
+
+
+}
 
 

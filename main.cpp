@@ -29,10 +29,17 @@ int main() {
     double* ab = new double;
     double* bb = new double();
     //Person p("ali","ahmadi","99dd33333",22);
-    Student s("ali", "akbari", "99*d33333", 33, "akbari", 3, a);
-    Student f = s;
-    cout<<f.calculateSalary();
+  //  Student s("ali", "akbari", "99*d33333", 33, "akbari", 3, a);
+    //Student f = s;
+    //cout<<f.calculateSalary();
 //    cout<<f.validate();
+
+    //printf("%20s %20s","alialia ali","ali");
+string aaa="99";
+string bbb = "98";
+string ccc = "999aoierh";
+ccc = ccc.substr(2);
+cout<<ccc;
 
 
 
