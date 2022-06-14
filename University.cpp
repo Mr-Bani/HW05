@@ -3,6 +3,8 @@
 #include "Student.h"
 #include <string>
 #include "Person.h"
+#include "vector"
+#include <algorithm>
 
 using namespace std;
 
@@ -37,14 +39,14 @@ std::ostream &University::operator<<(std::ostream &os) {
     cout << "Number of professors: " << numOfProfessors << endl;
     cout << "Budget: " << budget << endl;
     cout << "-Students-" << endl;
-    printf("%12s  %12s \n", "First name", "Last name");
+    printf("%-12s  %-12s \n", "First name", "Last name");
     for (int i = 0; i < numOfStudents; i++) {
-        printf("%12s   %12s \n", students[i]->getFirstName().c_str(), students[i]->getLastName().c_str());
+        printf("%-12s   %-12s \n", students[i]->getFirstName().c_str(), students[i]->getLastName().c_str());
     }
     cout << "-Professors-" << endl;
-    printf("%12s %12s %12s \n", "Title", "First name", "Last name");
+    printf("%-12s %-12s %-12s \n", "Title", "First name", "Last name");
     for (int i = 0; i < numOfProfessors; i++) {
-        printf("%12s  %12s  %12s \n", professors[i]->getTitle().c_str(), professors[i]->getFirstName().c_str(),
+        printf("%-12s  %-12s  %-12s \n", professors[i]->getTitle().c_str(), professors[i]->getFirstName().c_str(),
                professors[i]->getLastName().c_str());
     }
 }
@@ -139,5 +141,35 @@ double University::averageMarkOfCourse(std::string courseName) {
         return totalMark/number;
     }
 }
+
+void University::printCourses() {
+    vector<string> allCourses;
+    vector<double> courseAverages;
+    for(int i=0;i<numOfStudents;i++){
+        Student student = *students[i];
+        Course* courses = student.getCourses();
+        for(int j=0;j<student.getNumOfCourses();j++){
+            if(!(count(allCourses.begin(),allCourses.end(),courses[j].getName()))){
+                allCourses.push_back(courses[j].getName());
+                courseAverages.push_back(averageMarkOfCourse(courses[j].getName()));
+            }
+        }
+    }
+    for(int i=0;i<allCourses.size();i++){
+        for(int j=i;j<allCourses.size();j++){
+            if(courseAverages[i]>courseAverages[j]){
+                swap(allCourses[i],allCourses[j]);
+                swap(courseAverages[i],courseAverages[j]);
+            }
+        }
+    }
+    printf("%-20s %-10s","Course name","Average");
+    for(int i=0;i<allCourses.size();i++){
+        printf("%-20s %-10.4f",allCourses[i].c_str(),courseAverages[i]);
+    }
+
+
+}
+
 
 
