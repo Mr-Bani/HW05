@@ -74,7 +74,6 @@ void University::sort() {
             if (sal2 == 0) { sal2 = 100; }
             if (sal1 > sal2) {
                 swap(students[j], students[j+1]);
-                cout<<"greater: "<<sal1<<" smaller: "<<sal2<<endl;
             } else if (sal1 == sal2) {
                 if (students[j]->getLastName() > students[j+1]->getLastName()) {
                     swap(students[j], students[j+1]);
