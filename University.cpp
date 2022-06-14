@@ -97,4 +97,12 @@ std::istream &University::operator>>(istream &is) {
 
 }
 
+double University::averageGpa() {
+    double totalMarks=0;
+    for(int i=0;i<numOfStudents;i++){
+        totalMarks += students[i]->gpa();
+    }
+    return totalMarks/numOfStudents;
+}
+
 

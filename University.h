@@ -19,6 +19,8 @@ private:
     std::ostream& operator << (std::ostream& os);
     std::istream& operator >> (std::istream& is);
 
+    double averageGpa();
+
 
 
 };
