@@ -10,6 +10,7 @@
 #include "string"
 
 class Student : public Person {
+
 private:
     Course *courses;
     std::string FieldOfStudy;
@@ -37,6 +38,8 @@ public:
     void setNumOfCourses(int numOfCourses);
 
     void setCourses(int numberOfCourses,Course *courses);
+    
+    Student& operator = (const Student& old_obj);
 
 
 

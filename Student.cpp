@@ -118,7 +118,7 @@ double Student::gpa() {
 }
 
 double Student::calculateSalary() {
-    double salary = 20000*(*getWorkHours());
+    double salary = 20000*(getWorkHours());
     if(gpa()>17){
         salary+=salary/10;
     }
@@ -145,4 +145,15 @@ void Student::setCourses1(Course *courses) {
 int Student::getNumOfCourses() const {
     return numOfCourses;
 }
+
+Student &Student::operator=(const Student &old_obj) {
+    this->setFirstName(old_obj.getFirstName());
+    this->setLastName(old_obj.getLastName());
+    this->setWorkHours(old_obj.getWorkHours());
+    this->setId(old_obj.getId());
+    this->setFieldOfStudy(old_obj.FieldOfStudy);
+    this->setCourses(old_obj.getNumOfCourses(),old_obj.getCourses());
+    this->setNumOfCourses(old_obj.numOfCourses);
+}
+
 

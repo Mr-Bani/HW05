@@ -5,6 +5,7 @@
 #include "Person.h"
 #include "vector"
 #include <algorithm>
+#include "fstream"
 
 using namespace std;
 
@@ -125,65 +126,93 @@ double University::averageGpaOfField(std::string field) {
 double University::averageMarkOfCourse(std::string courseName) {
     double totalMark = 0;
     double number = 0;
-    for(int i=0;i<numOfStudents;i++){
-        Course* courses = students[i]->getCourses();
-        for(int j=0;j<students[i]->getNumOfCourses();j++){
-            if(courses[j].getName() == courseName){
-                totalMark+=*courses[j].getMark();
+    for (int i = 0; i < numOfStudents; i++) {
+        Course *courses = students[i]->getCourses();
+        for (int j = 0; j < students[i]->getNumOfCourses(); j++) {
+            if (courses[j].getName() == courseName) {
+                totalMark += *courses[j].getMark();
                 number++;
                 break;
             }
         }
-        if(number==0){
-            cout<<"No student has this course!";
+        if (number == 0) {
+            cout << "No student has this course!";
             return -1;
         }
-        return totalMark/number;
+        return totalMark / number;
     }
 }
 
 void University::printCourses() {
     vector<string> allCourses;
     vector<double> courseAverages;
-    for(int i=0;i<numOfStudents;i++){
+    for (int i = 0; i < numOfStudents; i++) {
         Student student = *students[i];
-        Course* courses = student.getCourses();
-        for(int j=0;j<student.getNumOfCourses();j++){
-            if(!(count(allCourses.begin(),allCourses.end(),courses[j].getName()))){
+        Course *courses = student.getCourses();
+        for (int j = 0; j < student.getNumOfCourses(); j++) {
+            if (!(count(allCourses.begin(), allCourses.end(), courses[j].getName()))) {
                 allCourses.push_back(courses[j].getName());
                 courseAverages.push_back(averageMarkOfCourse(courses[j].getName()));
             }
         }
     }
-    for(int i=0;i<allCourses.size();i++){
-        for(int j=i;j<allCourses.size();j++){
-            if(courseAverages[i]>courseAverages[j]){
-                swap(allCourses[i],allCourses[j]);
-                swap(courseAverages[i],courseAverages[j]);
+    for (int i = 0; i < allCourses.size(); i++) {
+        for (int j = i; j < allCourses.size(); j++) {
+            if (courseAverages[i] > courseAverages[j]) {
+                swap(allCourses[i], allCourses[j]);
+                swap(courseAverages[i], courseAverages[j]);
             }
         }
     }
-    printf("%-20s %-10s","Course name","Average");
-    for(int i=0;i<allCourses.size();i++){
-        printf("%-20s %-10.4f",allCourses[i].c_str(),courseAverages[i]);
+    printf("%-20s %-10s", "Course name", "Average");
+    for (int i = 0; i < allCourses.size(); i++) {
+        printf("%-20s %-10.4f", allCourses[i].c_str(), courseAverages[i]);
     }
 
 
 }
 
 bool University::isEnoughBudget() {
-    double totalSalary=0;
-    for(int i=0;i<numOfStudents;i++){
-        totalSalary+= students[i]->calculateSalary();
+    double totalSalary = 0;
+    for (int i = 0; i < numOfStudents; i++) {
+        totalSalary += students[i]->calculateSalary();
     }
-    for(int i=0;i<numOfProfessors;i++){
-        totalSalary+=professors[i]->calculateSalary();
+    for (int i = 0; i < numOfProfessors; i++) {
+        totalSalary += professors[i]->calculateSalary();
     }
-    if(totalSalary>=budget){
+    if (totalSalary >= budget) {
         return true;
     }
     return false;
 }
+
+void University::saveToFile() {
+    ofstream res("Top_Students.txt");
+    vector<string> handlefFields;
+    vector<Student> tops;
+    for (int i = 0; i < numOfStudents; i++) {
+        if (!(count(handlefFields.begin(), handlefFields.end(), students[i]->getFieldOfStudy()))) {
+            Student top = *students[i];
+            for (int j = i; j < numOfStudents; j++) {
+                if (students[j]->getFieldOfStudy() == top.getFieldOfStudy()) {
+                    if (students[j]->gpa() > top.gpa()) {
+                        top = *students[j];
+                    }
+                }
+            }
+            handlefFields.push_back(top.getFieldOfStudy());
+            tops.push_back(top);
+        }
+    }
+    res.fill();
+    res<<"-Top students-\n";
+    for (int i = 0; i < handlefFields.size(); i++) {
+        Student top = tops[i];
+        res<<top.getFirstName()<<" "<<top.getLastName()<<" GPA: "<<to_string(top.gpa())<<" Field of Study: "<<top.getFieldOfStudy()<<"\n";
+    }
+}
+
+
 
 
 

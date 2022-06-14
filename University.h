@@ -26,6 +26,7 @@ private:
     double averageMarkOfCourse(std::string courseName);
     void printCourses();
     bool isEnoughBudget();
+    void saveToFile();
 
 
 

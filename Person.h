@@ -26,7 +26,7 @@ public:
 
     const std::string &getId() const;
 
-    double *getWorkHours() const;
+    double getWorkHours() const;
 
     void setFirstName(const std::string &firstName);
 

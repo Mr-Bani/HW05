@@ -57,8 +57,8 @@ const string &Person::getId() const {
     return id;
 }
 
-double *Person::getWorkHours() const {
-    return workHours;
+double Person::getWorkHours() const {
+    return *workHours;
 }
 
 void Person::setFirstName(const string &firstName) {
@@ -103,7 +103,7 @@ Person::~Person() {
 }
 
 Person &Person::operator=(const Person &old_obj) {
-    this->workHours = new double (*old_obj.workHours);
+    *this->workHours = *old_obj.workHours;
     this->id = old_obj.id;
     this->lastName = old_obj.lastName;
     this->firstName = old_obj.firstName;

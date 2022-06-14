@@ -4,6 +4,7 @@
 #include "Student.h"
 #include "regex"
 #include "vector"
+#include "fstream"
 
 using namespace std;
 
@@ -43,7 +44,9 @@ vector<int> aa;
 aa.push_back(3);
 aa.push_back(5);
 
-    printf("%-20s %-10.4f","course name",34.555444);
+
+
+
 
 
 
