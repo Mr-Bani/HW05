@@ -21,9 +21,18 @@ public:
     Student(const Student& old_obj);
     ~Student();
     friend std::ostream& operator << (std::ostream& os, const Student student);
+
+    const std::string &getFieldOfStudy() const;
+
     friend std::istream& operator >> (std::istream& is, Student& studnet);
 
     void setFieldOfStudy(const std::string &fieldOfStudy);
+
+    Course *getCourses() const;
+
+    void setCourses1(Course *courses);
+
+    int getNumOfCourses() const;
 
     void setNumOfCourses(int numOfCourses);
 

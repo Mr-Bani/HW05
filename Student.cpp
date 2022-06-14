@@ -130,3 +130,19 @@ double Student::calculateSalary() {
 Student::Student() :Person(){
 }
 
+const string &Student::getFieldOfStudy() const {
+    return FieldOfStudy;
+}
+
+Course *Student::getCourses() const {
+    return courses;
+}
+
+void Student::setCourses1(Course *courses) {
+    Student::courses = courses;
+}
+
+int Student::getNumOfCourses() const {
+    return numOfCourses;
+}
+

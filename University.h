@@ -3,6 +3,7 @@
 #include "Professor.h"
 #include "Student.h"
 #include "iostream"
+#include "string"
 
 class University {
 private:
@@ -20,6 +21,9 @@ private:
     std::istream& operator >> (std::istream& is);
 
     double averageGpa();
+
+    double averageGpaOfField(std::string field);
+
 
 
 

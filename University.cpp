@@ -105,4 +105,21 @@ double University::averageGpa() {
     return totalMarks/numOfStudents;
 }
 
+double University::averageGpaOfField(std::string field) {
+    double totalMark = 0;
+    double number=0;
+    for(int i=0;i<numOfStudents;i++){
+        if(students[i]->getFieldOfStudy()==field){
+            totalMark+=students[i]->gpa();
+            number++;
+        }
+    }
+    if(number==0){
+        cout<<"No student with this field";
+        return 0;
+    }
+    return totalMark/number;
+
+}
+
 
